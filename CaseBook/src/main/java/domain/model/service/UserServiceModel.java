@@ -1,28 +1,21 @@
-package domain.entity;
+package domain.model.service;
 
-
-import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User extends BaseEntity{
-
-    @Column(nullable = false, unique = true)
+public class UserServiceModel {
+    private String id;
     private String username;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private String gender;
+    private List<UserServiceModel> friends;
 
-    @ManyToMany(cascade = CascadeType.ALL, targetEntity = User.class)
-    @JoinTable(name = "user_friends",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "friend_id"))
-    private List<User> friends;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -48,11 +41,11 @@ public class User extends BaseEntity{
         this.gender = gender;
     }
 
-    public List<User> getFriends() {
+    public List<UserServiceModel> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(List<UserServiceModel> friends) {
         this.friends = friends;
     }
 }
