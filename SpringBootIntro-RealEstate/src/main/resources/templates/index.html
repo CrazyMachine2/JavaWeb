@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Agency</title>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<section>
+    <div id="roof">
+    </div>
+    <div id="building"></div>
+
+    <th:block th:if="${offers.size() == 0}">
+        <p>There aren't any offers!</p>
+    </th:block>
+
+    <th:block th:each="offer : ${offers}">
+        <div class="apartment">
+            <p> Rent: <span th:text="${offer.apartmentRent}"></span></p>
+            <p> Type: <span th:text="${offer.apartmentType}"></span></p>
+            <p> Commission: <span th:text="${offer.agencyCommission}"></span></p>
+        </div>
+    </th:block>
+    <div id="offerManager">
+        <div id="regOffer">
+            <a href="/register" class="button">Reg Offer</a>
+        </div>
+        <div id="findOffer">
+            <a href="/find" class="button">Find Offer</a>
+        </div>
+    </div>
+</section>
+</body>
+</html>
